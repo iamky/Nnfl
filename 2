@@ -1,0 +1,22 @@
+# ✅ Lab Session 2: Backpropagation Learning Algorithm (2-input XOR)
+# Backpropagation for XOR
+from keras.models import Sequential
+from keras.layers import Dense
+import numpy as np
+
+# XOR input and output
+X = np.array([[0,0], [0,1], [1,0], [1,1]])
+Y = np.array([[0], [1], [1], [0]])
+
+# Model
+model = Sequential()
+model.add(Dense(4, input_dim=2, activation='relu'))
+model.add(Dense(1, activation='sigmoid'))
+
+# Compile and Train
+model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+model.fit(X, Y, epochs=1000, verbose=0)
+
+# Test
+print("\nXOR Output:")
+print(model.predict(X).round())
