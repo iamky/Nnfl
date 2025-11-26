@@ -1,0 +1,33 @@
+# ✅ Lab Session 1: Single Layer Perceptron Algorithm
+# Single Layer Perceptron Algorithm (AND Gate)
+import numpy as np
+
+# Inputs and corresponding outputs
+X = np.array([[0,0],[0,1],[1,0],[1,1]])  # input combinations
+Y = np.array([0, 0, 0, 1])              # AND output
+
+# Parameters
+epochs = 10
+lr = 0.1
+weights = np.zeros(2)
+bias = 0
+
+print("Training Perceptron for AND Gate")
+
+# Activation Function: Step Function
+def activation(x):
+    return 1 if x > 0 else 0
+
+# Training
+for epoch in range(epochs):
+    print(f"\nEpoch {epoch+1}")
+    for i in range(len(X)):
+        z = np.dot(X[i], weights) + bias
+        y_pred = activation(z)
+        error = Y[i] - y_pred
+
+        # Update weights and bias
+        weights += lr * error * X[i]
+        bias += lr * error
+
+        print(f"Input: {X[i]}, Pred: {y_pred}, Error: {error}, Weights: {weights}, Bias: {bias}")
