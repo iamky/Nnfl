@@ -1,0 +1,12 @@
+# ✅ Lab Session 3: Multilayer Feedforward Network using Backpropagation
+# Similar to Lab 2 but with more layers
+model = Sequential()
+model.add(Dense(8, input_dim=2, activation='relu'))
+model.add(Dense(4, activation='relu'))
+model.add(Dense(1, activation='sigmoid'))
+
+model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+model.fit(X, Y, epochs=1000, verbose=0)
+
+print("\nMultilayer Feedforward XOR Output:")
+print(model.predict(X).round())
